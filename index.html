@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Faso Debout | Les Réalisations Majeures de la Transition</title>
+    <style>
+        :root {
+            --primary: #15803d;      /* Vert patriotique */
+            --primary-dark: #166534;
+            --accent-red: #dc2626;   /* Rouge national */
+            --accent-gold: #f59e0b;  /* Étoile dorée */
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* En-tête */
+        header {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .flag-accent {
+            display: flex;
+            flex-direction: column;
+            width: 24px;
+            height: 18px;
+            border-radius: 2px;
+            overflow: hidden;
+            box-shadow: 0 0 4px rgba(0,0,0,0.3);
+        }
+
+        .flag-red { background: var(--accent-red); height: 50%; }
+        .flag-green { background: var(--primary); height: 50%; }
+
+        .logo-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+        }
+
+        .logo-title span {
+            color: var(--accent-gold);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Bannière Hero */
+        .hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.92)),
+                        radial-gradient(circle at top right, rgba(220, 38, 38, 0.3), transparent 50%),
+                        radial-gradient(circle at bottom left, rgba(21, 128, 61, 0.3), transparent 50%);
+            color: #ffffff;
+            padding: 4rem 1.5rem 3.5rem;
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .badge-hero {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--accent-gold);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            padding: 0.3rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Chiffres clés */
+        .stats-bar {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.75rem 1.5rem;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+            font-weight: 500;
+        }
+
+        /* Conteneur Principal */
+        .main-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2.5rem;
+        }
+
+        /* Articles du Blog */
+        .blog-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .post-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .post-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .category-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+        }
+
+        .cat-defense { background: #fee2e2; color: #b91c1c; }
+        .cat-economy { background: #fef3c7; color: #b45309; }
+        .cat-agri { background: #dcfce7; color: #15803d; }
+        .cat-solidarity { background: #e0e7ff; color: #4338ca; }
+        .cat-diplomacy { background: #f3e8ff; color: #7e22ce; }
+
+        .post-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .post-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.85rem;
+            line-height: 1.35;
+        }
+
+        .post-excerpt {
+            color: #475569;
+            margin-bottom: 1.25rem;
+        }
+
+        .achievements-list {
+            background: #f8fafc;
+            border-left: 4px solid var(--primary);
+            padding: 1rem 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 1.25rem;
+        }
+
+        .achievements-list h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+
+        .achievements-list ul {
+            padding-left: 1.2rem;
+            color: #334155;
+            font-size: 0.92rem;
+        }
+
+        .achievements-list li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* Barre latérale (Sidebar) */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-widget {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.75rem;
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        .quote-box {
+            font-style: italic;
+            color: #334155;
+            border-left: 3px solid var(--accent-red);
+            padding-left: 1rem;
+            margin: 0.5rem 0 1rem;
+        }
+
+        .quote-author {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #0f172a;
+            text-align: right;
+        }
+
+        .author-title {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: right;
+        }
+
+        .aes-card {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            color: #ffffff;
+            border-radius: 12px;
+            padding: 1.75rem;
+        }
+
+        .aes-card h3 {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .aes-card p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .aes-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .aes-tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* Pied de page */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 3rem 1.5rem 2rem;
+            margin-top: 4rem;
+            border-top: 4px solid var(--accent-red);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .motto {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 860px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            nav ul {
+                display: none; /* Simplification mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barre de Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-group">
+                <div class="flag-accent">
+                    <div class="flag-red"></div>
+                    <div class="flag-green"></div>
+                </div>
+                <div class="logo-title">Faso<span>Debout</span></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#defense">Défense</a></li>
+                    <li><a href="#agriculture">Agriculture</a></li>
+                    <li><a href="#economie">Économie</a></li>
+                    <li><a href="#solidarite">Solidarité</a></li>
+                    <li><a href="#diplomatie">Diplomatie (AES)</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Section Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="badge-hero">Chronique & Bilan de la Transition</div>
+            <h1>Les Grandes Victoires de la Transition Burkinabè</h1>
+            <p>
+                Sous le leadership du Capitaine Ibrahim Traoré, le Burkina Faso est engagé dans un tournant historique axé sur la reconquête du territoire, la souveraineté alimentaire et la renaissance économique.
+            </p>
+        </div>
+    </section>
+
+    <!-- Indicateurs clés -->
+    <section class="stats-bar">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>+100 000 ha</h3>
+                <p>Terres aménagées pour l'offensive agricole</p>
+            </div>
+            <div class="stat-item">
+                <h3>+130 Milliards FCFA</h3>
+                <p>Mobilisés via le Fonds de Soutien Patriotique</p>
+            </div>
+            <div class="stat-item">
+                <h3>1ère</h3>
+                <p>Raffinerie nationale d'or posée au Faso</p>
+            </div>
+            <div class="stat-item">
+                <h3>AES</h3>
+                <p>Alliance historique avec le Mali et le Niger</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenu Principal -->
+    <main class="main-container">
+        
+        <!-- Liste des Articles de Blog -->
+        <section class="blog-feed">
+            
+            <!-- Article 1: Défense -->
+            <article class="post-card" id="defense">
+                <div class="post-header">
+                    <span class="category-tag cat-defense">Défense & Sécurité</span>
+                    <span class="post-date">Chantier prioritaire</span>
+                </div>
+                <h2 class="post-title">Reconquête du Territoire et Montée en Puissance des FDS et VDP</h2>
+                <p class="post-excerpt">
+                    Face au défi sécuritaire, la Transition a opéré une transformation radicale des capacités de défense du Burkina Faso par une réorganisation stratégique et l'équipement massif des forces armées.
+                </p>
+                <div class="achievements-list">
+                    <h4>Faits marquants et exploits :</h4>
+                    <ul>
+                        <li><strong>Équipement technologique de pointe :</strong> Acquisition de drones de combat modernes (notamment la gamme Bayraktar), d'hélicoptères d'attaque et de blindés de transport de troupes.</li>
+                        <li><strong>Mobilisation populaire des VDP :</strong> Recrutement, formation et équipement d'environ 50 000 Volontaires pour la Défense de la Patrie pour appuyer les Forces de Défense et de Sécurité (FDS).</li>
+                        <li><strong>Libération de localités :</strong> Réouverture des axes routiers stratégiques et sécurisation de zones autrefois sous blocus terroriste, facilitant le retour des populations déplacées internes (PDI).</li>
+                        <li><strong>Autonomie balistique et militaire :</strong> Lancement d'initiatives pour la réparation, le reconditionnement local et la fabrication de matériels tactiques.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Article 2: Agriculture & Alimentation -->
+            <article class="post-card" id="agriculture">
+                <div class="post-header">
+                    <span class="category-tag cat-agri">Souveraineté Alimentaire</span>
+                    <span class="post-date">Offensive 2023-2025</span>
+                </div>
+                <h2 class="post-title">L'Offensive Agropastorale et Halieutique : Le Pari de l'Autosuffisance</h2>
+                <p class="post-excerpt">
+                    Considérant que la véritable indépendance commence dans l'assiette, le Président Ibrahim Traoré a lancé un vaste plan national pour mettre fin aux importations de denrées de base.
+                </p>
+                <div class="achievements-list">
+                    <h4>Faits marquants et exploits :</h4>
+                    <ul>
+                        <li><strong>Distribution massive de matériels agricoles :</strong> Remise de centaines de tracteurs, motoculteurs et tonnes d'engrais subventionnés aux coopératives et jeunes producteurs.</li>
+                        <li><strong>Mise en valeur des bas-fonds et barrages :</strong> Valorisation des plaines aménagées comme celle de Bagré et du Sourou, avec production intensive de riz local et de maïs.</li>
+                        <li><strong>Initiative présidentielle pour la production agricole :</strong> Mobilisation des forces armées et des jeunes civils sur des fermes pilotes à haut rendement.</li>
+                        <li><strong>Valorisation de l'élevage et de la pisciculture :</strong> Ensemencement de centaines de barrages d'eau en alevins pour doubler la production locale de poisson.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Article 3: Industrie & Ressources -->
+            <article class="post-card" id="economie">
+                <div class="post-header">
+                    <span class="category-tag cat-economy">Industrie & Souveraineté</span>
+                    <span class="post-date">Transformation Locale</span>
+                </div>
+                <h2 class="post-title">Valorisation des Ressources Nationales : Première Raffinerie d'Or et Relance Industrielle</h2>
+                <p class="post-excerpt">
+                    Rompre avec le modèle de simple exportateur de matières brutes : le gouvernement a enclenché un vaste chantier de transformation locale des richesses minières et agricoles.
+                </p>
+                <div class="achievements-list">
+                    <h4>Faits marquants et exploits :</h4>
+                    <ul>
+                        <li><strong>Première raffinerie d'or nationale :</strong> Pose de la première pierre de la raffinerie à Ouagadougou avec une capacité de traitement de 150 tonnes d'or par an, garantissant le contrôle des flux d'or et créant des emplois directs.</li>
+                        <li><strong>Usine de transformation de tomates à Bobo-Dioulasso :</strong> Lancement d'une unité moderne pour valoriser la production maraîchère nationale et éviter les pertes post-récolte.</li>
+                        <li><strong>Création de l'Agence pour la Promotion de l'Entrepreneuriat Communautaire (APEC) :</strong> Permettre aux citoyens d'investir directement et d'être actionnaires d'usines et d'entreprises stratégiques nationales.</li>
+                        <li><strong>Relance des unités textiles et cotonnières :</strong> Promotion active du port du tissu traditionnel <em>Faso Dan Fani</em> dans l'administration et le milieu scolaire.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Article 4: Solidarité & FSP -->
+            <article class="post-card" id="solidarite">
+                <div class="post-header">
+                    <span class="category-tag cat-solidarity">Engagement Citoyen</span>
+                    <span class="post-date">Financement Endogène</span>
+                </div>
+                <h2 class="post-title">Le Fonds de Soutien Patriotique (FSP) : Le Triomphe de la Solidarité Endogène</h2>
+                <p class="post-excerpt">
+                    Pour financer l'effort de paix sans s'endetter de façon toxique auprès de bailleurs extérieurs, le Burkina Faso a mis en place un modèle innovant d'effort patriotique consenti par chaque citoyen.
+                </p>
+                <div class="achievements-list">
+                    <h4>Faits marquants et exploits :</h4>
+                    <ul>
+                        <li><strong>Mobilisation record :</strong> Plus de 130 milliards de FCFA collectés grâce aux prélèvements volontaires, taxes de solidarité sur les télécoms et contributions des Burkinabè de l'intérieur et de la diaspora.</li>
+                        <li><strong>Prise en charge directe des VDP :</strong> Rémunération régulière, assurance santé, soins médicaux et primes de protection pour les combattants volontaires et leurs familles.</li>
+                        <li><strong>Transparence et gestion rigoureuse :</strong> Reddition périodique publique des comptes gérée par un comité multipartite, instaurant la confiance citoyenne.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Article 5: Diplomatie & AES -->
+            <article class="post-card" id="diplomatie">
+                <div class="post-header">
+                    <span class="category-tag cat-diplomacy">Diplomatie & Géopolitique</span>
+                    <span class="post-date">Intégration Régionale</span>
+                </div>
+                <h2 class="post-title">L'Alliance et la Confédération des États du Sahel (AES) : Une Nouvelle Aube</h2>
+                <p class="post-excerpt">
+                    Refusant le paternalisme et les partenariats inégaux, le Burkina Faso, le Mali et le Niger ont scellé une union historique pour bâtir un espace de défense mutuelle et de prospérité partagée.
+                </p>
+                <div class="achievements-list">
+                    <h4>Faits marquants et exploits :</h4>
+                    <ul>
+                        <li><strong>Signature du traité de la Confédération AES :</strong> Naissance officielle d'une communauté forte de plus de 70 millions d'habitants à Niamey en juillet 2024.</li>
+                        <li><strong>Force unifiée de défense conjointe :</strong> Opérations militaires coordonnées le long des frontières communes pour éradiquer les groupes armés terroristes.</li>
+                        <li><strong>Projets de monnaie et de banque d'investissement communes :</strong> Volonté affirmée de sortir du franc CFA et de lancer une banque de développement sahélienne.</li>
+                        <li><strong>Diversification des alliances mondiales :</strong> Nouveaux partenariats stratégiques bilatéraux basés sur le respect mutuel et la souveraineté.</li>
+                    </ul>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- Barre Latérale -->
+        <aside class="sidebar">
+            
+            <!-- Citation -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Pensée Dirigeante</h3>
+                <div class="quote-box">
+                    « Nous avons décidé d'être souverains, de vivre libres et dignes ou de périr. Notre combat n'est pas seulement burkinabè, il est panafricain. »
+                </div>
+                <div class="quote-author">Capitaine Ibrahim Traoré</div>
+                <div class="author-title">Président de la Transition du Burkina Faso</div>
+            </div>
+
+            <!-- Fiche AES -->
+            <div class="aes-card">
+                <h3>L'Espace AES en Bref</h3>
+                <p>
+                    L'Alliance des États du Sahel (Burkina Faso, Mali, Niger) redéfinit l'avenir de l'Afrique de l'Ouest à travers trois piliers : la défense mutuelle, la diplomatie solidaire et le développement économique intégré.
+                </p>
+                <div class="aes-tags">
+                    <span class="aes-tag">Burkina Faso</span>
+                    <span class="aes-tag">Mali</span>
+                    <span class="aes-tag">Niger</span>
+                    <span class="aes-tag">Souveraineté</span>
+                </div>
+            </div>
+
+            <!-- Focus APEC -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Actionnariat Populaire</h3>
+                <p style="font-size: 0.9rem; color: #475569; margin-bottom: 0.8rem;">
+                    À travers l'<strong>APEC</strong> (Entrepreneuriat Communautaire), le peuple finance ses propres usines :
+                </p>
+                <ul style="font-size: 0.85rem; padding-left: 1.2rem; color: #334155;">
+                    <li>Complexe minier et métallurgique</li>
+                    <li>Usines de transformation agricole</li>
+                    <li>Centrales solaires et énergie verte</li>
+                </ul>
+            </div>
+
+        </aside>
+
+    </main>
+
+    <!-- Pied de page -->
+    <footer>
+        <div class="footer-content">
+            <div class="motto">« La Patrie ou la Mort, nous vaincrons ! »</div>
+            <p class="footer-text">Blog documentaire sur les avancées et réalisations de la Transition au Burkina Faso.</p>
+            <p class="footer-text">&copy; 2024-2026 - Faso Debout | Pour une Afrique digne et souveraine.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
